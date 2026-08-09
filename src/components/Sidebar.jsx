@@ -1,20 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
 import useSidebarStore from "../store/sidebar";
 import useThemeStore from "../store/useThemeStore";
+import UseAuthStore from "../store/UseAuthStore";
 
 export default function Sidebar() {
   const { open, toggleOpen } = useSidebarStore();
+  console.log("Sidebar component loaded");
+console.log("sidebar open:", open);
   const { theme } = useThemeStore();
-  const location = useLocation();
+const { userRole } = UseAuthStore();
+const location = useLocation();
 
-  const menu = [
-    { name: "Home", path: "/" },
-    { name: "Profile", path: "/profile" },
-    { name: "Dashboard", path: "/dashboard" },
-    { name: "Products", path: "/products" },
-    { name: "Card", path: "/card" },
-    { name: "Settings", path: "/settings" },
-  ];
+ const menu =
+  userRole === "admin"
+    ? [
+        { name: "Dashboard", path: "/admin/dashboard" },
+        { name: "Products", path: "/admin/products" },
+        { name: "Settings", path: "/admin/settings" },
+      ]
+    : [
+        { name: "Home", path: "/" },
+        { name: "Profile", path: "/profile" },
+        { name: "Card", path: "/card" },
+      ];
 
   return (
     <>

@@ -358,7 +358,7 @@ export default function ForgotPassword() {
 
                                     w-full
 
-                                    bg-[#212529]
+                                    bg-[#0077b6]
 
                                     text-white
 
@@ -366,7 +366,7 @@ export default function ForgotPassword() {
 
                                     rounded-lg
 
-                                    hover:bg-[#343a40]
+                                    hover:bg-blue-700
 
                                     transition
 

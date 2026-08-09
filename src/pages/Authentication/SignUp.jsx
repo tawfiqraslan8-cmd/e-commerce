@@ -617,13 +617,13 @@ export default function SignUp() {
                 textTransform:"none",
 
 
-                backgroundColor:"#212529",
+                backgroundColor:"[#0077b6]",
 
 
 
                 "&:hover":{
 
-                  backgroundColor:"#343a40"
+                  backgroundColor:"blue-700"
 
                 }
 

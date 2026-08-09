@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useThemeStore from "../store/useThemeStore";
+import useThemeStore from "../../store/useThemeStore";
 
 export default function ProductDetails() {
   const { id } = useParams();
