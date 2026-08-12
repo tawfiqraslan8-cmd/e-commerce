@@ -303,7 +303,7 @@ export default function ProductsTable() {
 
             <tr
               key={product.id}
-              onClick={() => navigate(`/products/${product.id}`)}
+              onClick={() => navigate(`/admin/products/${product.id}`)}
               className="cursor-pointer hover:bg-gray-100"
             >
 

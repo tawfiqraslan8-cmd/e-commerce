@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import SignIn from './pages/Authentication/SignIn'
 import SignUp from './pages/Authentication/SignUp'
 import Home from "./pages/User/Home";
@@ -17,13 +16,11 @@ import Services from "./pages/User/Services";
 import Contact from "./pages/User/Contact";
 import Settings from "./pages/Admin/Settings";
 import AdminRoute from "./components/routes/AdminRoute";
-import UserRoute from "./components/routes/UserRoute";
 
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
   console.log("fg");
 
   return (

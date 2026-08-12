@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useThemeStore from "../../store/useThemeStore";
+import useCartStore from "../../store/useCartStore";
 
 export default function Card() {
 
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-
+  const {cart, AddToCart}=useCartStore()
+  console.log(cart,"this is my empty cart");
+  
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("asc");
@@ -27,7 +30,11 @@ export default function Card() {
       .then((data) => setProducts(data.products));
   }, [page]);
 
+const AddToCartHandeler = (e,product) => {
+  e.stopPropagation();
 
+  AddToCart(product);
+};
 
 
   const filteredProducts = products
@@ -65,6 +72,7 @@ export default function Card() {
         className="
           p-6
         "
+       
       >
 
         <div className="flex justify-between items-center mb-5">
@@ -167,6 +175,7 @@ export default function Card() {
                 >
                   ${product.price}
                 </p>
+        <button onClick={(e)=>AddToCartHandeler(e,product)} className='rounded-sm bg-blue-500 p-2'>Add to cart</button>
 
 
               </div>

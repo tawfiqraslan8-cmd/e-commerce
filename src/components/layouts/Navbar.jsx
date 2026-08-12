@@ -93,6 +93,18 @@ export default function Navbar({ showSidebarButton = true }) {
                                 >
                                     Products
                                 </Link>
+
+                                <Link
+                                    to="/admin/settings"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Settings
+                                </Link>
+
                             </>
 
 

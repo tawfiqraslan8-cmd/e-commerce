@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import useThemeStore from "../../store/useThemeStore";
+import CartDrawer from "./Drawer";
 
 export default function CardLayout() {
   const { theme } = useThemeStore();
@@ -19,7 +20,7 @@ export default function CardLayout() {
 
       {/* Navbar فوق */}
       <Navbar showSidebarButton={false} />
-
+       <CartDrawer/>
       {/* المحتوى */}
       <div className="flex mt-20">
 
