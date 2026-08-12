@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useThemeStore from "../store/useThemeStore";
+import useThemeStore from "../../store/useThemeStore";
 
 export default function Card() {
 

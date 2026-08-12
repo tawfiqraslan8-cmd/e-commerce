@@ -21,7 +21,7 @@ export default function CardLayout() {
       <Navbar showSidebarButton={false} />
 
       {/* المحتوى */}
-      <div className="flex">
+      <div className="flex mt-20">
 
         <div
           className={`

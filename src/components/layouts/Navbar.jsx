@@ -9,15 +9,15 @@ export default function Navbar({ showSidebarButton = true }) {
 
     const { toggleOpen } = useSidebarStore();
     const { theme, themeToggle } = useThemeStore();
-    const {userRole}=UseAuthStore()
-    
+    const { userRole, logout } = UseAuthStore();
+
+
 
     return (
         <nav
             className={`
                 sticky top-0 z-50
-                ${
-                    theme === "dark"
+                ${theme === "dark"
                     ? "bg-[#212529] text-white border-b border-slate-200"
                     : "bg-[#64b5f6] text-white "
                 }
@@ -30,21 +30,21 @@ export default function Navbar({ showSidebarButton = true }) {
                 {/* Logo */}
                 <div className="flex items-center gap-3">
 
-            {    userRole==='admin'  ?
-             showSidebarButton && (
-                        <button
-                            onClick={toggleOpen}
-                            className="
+                    {userRole === 'admin' ?
+                        showSidebarButton && (
+                            <button
+                                onClick={toggleOpen}
+                                className="
                                 p-2 
                                 rounded-lg 
                                 hover:bg-black/20 
                                 transition
                             "
-                        >
-                            ☰
-                        </button>
-                    ) :null
-}
+                            >
+                                ☰
+                            </button>
+                        ) : null
+                    }
 
                     <Link
                         to="/"
@@ -66,52 +66,104 @@ export default function Navbar({ showSidebarButton = true }) {
                 {/* Navigation */}
                 <div className="hidden md:flex items-center gap-8">
 
-                    <Link
-                        to="/"
-                        className="
-                            font-bold
-                            hover:text-blue-400 
-                            transition
-                        "
-                    >
-                        Home
-                    </Link>
+
+                    {
+                        userRole === "admin" ? (
+
+                            <>
+                                <Link
+                                    to="/admin/dashboard"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Dashboard
+                                </Link>
 
 
-                    <Link
-                        to="/about"
-                        className="
-                            font-bold
-                            hover:text-blue-400 
-                            transition
-                        "
-                    >
-                        About
-                    </Link>
+                                <Link
+                                    to="/admin/products"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Products
+                                </Link>
+                            </>
 
 
-                    <Link
-                        to="/services"
-                        className="
-                            font-bold
-                            hover:text-blue-400 
-                            transition
-                        "
-                    >
-                        Services
-                    </Link>
+                        ) : (
+
+                            <>
+
+                                <Link
+                                    to="/"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Home
+                                </Link>
 
 
-                    <Link
-                        to="/contact"
-                        className="
-                            font-bold
-                            hover:text-blue-400 
-                            transition
-                        "
-                    >
-                        Contact
-                    </Link>
+                                <Link
+                                    to="/about"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    About
+                                </Link>
+
+
+                                <Link
+                                    to="/services"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Services
+                                </Link>
+
+
+                                <Link
+                                    to="/contact"
+                                    className="
+        font-bold
+        hover:text-blue-400 
+        transition
+    "
+                                >
+                                    Contact
+                                </Link>
+
+                                <Link
+                                    to="/card"
+                                    className="
+    font-bold
+    hover:text-blue-400 
+    transition
+  "
+                                >
+                                    Card
+                                </Link>
+
+                            </>
+
+                        )
+
+                    }
+
 
                 </div>
 
@@ -138,8 +190,7 @@ export default function Navbar({ showSidebarButton = true }) {
                             flex
                             items-center
 
-                            ${
-                                theme === "dark"
+                            ${theme === "dark"
                                 ? "bg-gray-800"
                                 : "bg-gray-300"
                             }
@@ -160,8 +211,7 @@ export default function Navbar({ showSidebarButton = true }) {
                                 transition-transform
                                 duration-300
 
-                                ${
-                                    theme === "dark"
+                                ${theme === "dark"
                                     ? "translate-x-7"
                                     : "translate-x-1"
                                 }
@@ -170,16 +220,16 @@ export default function Navbar({ showSidebarButton = true }) {
 
                             {
                                 theme === "dark"
-                                ?
-                                <FiMoon
-                                    size={14}
-                                    className="text-gray-800"
-                                />
-                                :
-                                <FiSun
-                                    size={14}
-                                    className="text-yellow-500"
-                                />
+                                    ?
+                                    <FiMoon
+                                        size={14}
+                                        className="text-gray-800"
+                                    />
+                                    :
+                                    <FiSun
+                                        size={14}
+                                        className="text-yellow-500"
+                                    />
                             }
 
                         </span>
@@ -189,11 +239,32 @@ export default function Navbar({ showSidebarButton = true }) {
 
 
 
+                    {
+                        userRole && (
+                            <button
+                                onClick={() => {
+                                    logout();
+                                    window.location.href = "/signin";
+                                }}
+                                className="
+        px-5 py-2
+        rounded-lg
+        bg-[#0077b6]
+        text-white
+        font-bold
+    "
+                            >
+                                Logout
+                            </button>
+                        )
+                    }
 
-
-                    <Link
-                        to="/signin"
-                        className="
+                    {
+                        !userRole && (
+                            <>
+                                <Link
+                                    to="/signin"
+                                    className="
                             px-5 py-2
                             rounded-lg
                             hover:border-black
@@ -202,17 +273,17 @@ export default function Navbar({ showSidebarButton = true }) {
                             text-white
                             font-bold
                         "
-                    >
-                        Sign In
-                    </Link>
+                                >
+                                    Sign In
+                                </Link>
 
 
 
 
 
-                    <Link
-                        to="/signup"
-                        className="
+                                <Link
+                                    to="/signup"
+                                    className="
                             px-5 py-2
                             rounded-lg
                             
@@ -222,9 +293,13 @@ export default function Navbar({ showSidebarButton = true }) {
                             text-white
                             font-bold
                         "
-                    >
-                        Get Started
-                    </Link>
+                                >
+                                    Get Started
+                                </Link>
+
+                            </>
+                        )
+                    }
 
 
                 </div>

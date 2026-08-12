@@ -21,7 +21,7 @@ export function DashboardLayout() {
     >
 
       {/* Navbar فوق */}
-      <Navbar />
+      <Navbar showSidebarButton={true} />
 
       {/* تحت Navbar */}
       <div className="flex mt-20">

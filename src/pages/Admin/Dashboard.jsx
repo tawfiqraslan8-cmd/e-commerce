@@ -1,8 +1,8 @@
-import StatCard from "../components/StatCard";
-import SalesChart from "../components/SalesChart";
-import SalesRanking from "../components/SalesRanking";
-import { stats } from "../data/dashboardData";
-import useThemeStore from "../store/useThemeStore";
+import StatCard from "../../components/StatCard";
+import SalesChart from "../../components/SalesChart";
+import SalesRanking from "../../components/SalesRanking";
+import { stats } from "../../data/dashboardData";
+import useThemeStore from "../../store/useThemeStore";
 
 export default function Dashboard() {
   const { theme } = useThemeStore();

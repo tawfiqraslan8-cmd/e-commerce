@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -21,6 +22,7 @@ export default function SignIn() {
 
   const { theme, themeToggle } = useThemeStore();
   const { login } = UseAuthStore();
+  const navigate = useNavigate();
 
 
   const [form, setForm] = useState({
@@ -79,6 +81,11 @@ export default function SignIn() {
 
       login(token, userRole);
 
+      if (userRole === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
 
     } catch (error) {
 
@@ -143,12 +150,12 @@ export default function SignIn() {
 
       <Box
         sx={{
-          minHeight:"100vh",
-          position:"relative",
-          display:"flex",
-          justifyContent:"center",
-          alignItems:"center",
-          padding:2,
+          minHeight: "100vh",
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 2,
 
           background:
             theme === "dark"
@@ -172,10 +179,9 @@ export default function SignIn() {
             transition-all
             duration-300
 
-            ${
-              theme === "dark"
-                ? "bg-gray-800"
-                : "bg-gray-300"
+            ${theme === "dark"
+              ? "bg-gray-800"
+              : "bg-gray-300"
             }
           `}
         >
@@ -193,10 +199,9 @@ export default function SignIn() {
               transition-transform
               duration-300
 
-              ${
-                theme === "dark"
-                  ? "translate-x-7"
-                  : "translate-x-1"
+              ${theme === "dark"
+                ? "translate-x-7"
+                : "translate-x-1"
               }
             `}
           >
@@ -204,9 +209,9 @@ export default function SignIn() {
             {
               theme === "dark"
                 ?
-                <FiMoon size={14} className="text-gray-800"/>
+                <FiMoon size={14} className="text-gray-800" />
                 :
-                <FiSun size={14} className="text-yellow-500"/>
+                <FiSun size={14} className="text-yellow-500" />
             }
 
           </span>
@@ -223,11 +228,11 @@ export default function SignIn() {
 
           sx={{
 
-            width:420,
+            width: 420,
 
-            p:4,
+            p: 4,
 
-            borderRadius:4,
+            borderRadius: 4,
 
 
             backgroundColor:
@@ -251,8 +256,8 @@ export default function SignIn() {
 
             <h1
               style={{
-                margin:0,
-                fontSize:28
+                margin: 0,
+                fontSize: 28
               }}
             >
               Welcome Back
@@ -261,7 +266,7 @@ export default function SignIn() {
 
             <p
               style={{
-                marginTop:6,
+                marginTop: 6,
                 color:
                   theme === "dark"
                     ? "#ddd"
@@ -304,7 +309,7 @@ export default function SignIn() {
 
               sx={{
                 ...inputStyle,
-                mb:2
+                mb: 2
               }}
 
             />
@@ -333,7 +338,7 @@ export default function SignIn() {
 
               sx={{
                 ...inputStyle,
-                mb:2
+                mb: 2
               }}
 
             />
@@ -376,14 +381,14 @@ export default function SignIn() {
               fullWidth
 
               sx={{
-                mt:2,
-                py:1.5,
-                borderRadius:2,
-                textTransform:"none",
-                backgroundColor:"#212529",
+                mt: 2,
+                py: 1.5,
+                borderRadius: 2,
+                textTransform: "none",
+                backgroundColor: "[#0077b6]",
 
-                "&:hover":{
-                  backgroundColor:"#343a40"
+                "&:hover": {
+                  backgroundColor: "blue-700"
                 }
 
               }}
