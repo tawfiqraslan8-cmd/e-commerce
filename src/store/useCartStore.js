@@ -10,7 +10,8 @@ const useCartStore = create(
 
       openCart: () => set({ isCartOpen: true }),
 
-      closeCart: () => set({ isCartOpen: false }),
+      closeCart: () => set({
+         isCartOpen: false }),
 
       AddToCart: (product) => {
         set((state) => {
