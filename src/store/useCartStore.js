@@ -6,6 +6,12 @@ const useCartStore = create(
     (set) => ({
       cart: [],
 
+      isCartOpen: false,
+
+      openCart: () => set({ isCartOpen: true }),
+
+      closeCart: () => set({ isCartOpen: false }),
+
       AddToCart: (product) => {
         set((state) => {
           const productExistance = state.cart.find(
@@ -17,9 +23,9 @@ const useCartStore = create(
               cart: state.cart.map((item) =>
                 item.id === product.id
                   ? {
-                      ...item,
-                      quantity: item.quantity + 1,
-                    }
+                    ...item,
+                    quantity: item.quantity + 1,
+                  }
                   : item
               ),
             };
@@ -50,9 +56,9 @@ const useCartStore = create(
           cart: state.cart.map((item) =>
             item.id === id
               ? {
-                  ...item,
-                  quantity: item.quantity + 1,
-                }
+                ...item,
+                quantity: item.quantity + 1,
+              }
               : item
           ),
         }));
@@ -64,9 +70,9 @@ const useCartStore = create(
             .map((item) =>
               item.id === id
                 ? {
-                    ...item,
-                    quantity: item.quantity - 1,
-                  }
+                  ...item,
+                  quantity: item.quantity - 1,
+                }
                 : item
             )
             .filter((item) => item.quantity > 0),

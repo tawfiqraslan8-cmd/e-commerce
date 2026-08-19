@@ -3,6 +3,8 @@ import SignUp from './pages/Authentication/SignUp'
 import Home from "./pages/User/Home";
 import ForgotPassword from "./pages/Authentication/ForgotPassword";
 import { Route, Routes } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
+import UseAuthStore from "./store/UseAuthStore";
 // import { dividerClasses } from '@mui/material'
 import { DashboardLayout } from './components/layouts/DashboardLayout';
 import ProductsTable from './pages/Admin/ProductsTable';
@@ -21,7 +23,9 @@ import AdminRoute from "./components/routes/AdminRoute";
 
 
 function App() {
-  console.log("fg");
+  const { userRole } = UseAuthStore();
+
+  console.log("userRole:", userRole);
 
   return (
     <Routes>
@@ -32,14 +36,14 @@ function App() {
 
       {/* صفحات المستخدم */}
 
-      <Route path="/" element={<CardLayout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="card" element={<Card />} />
-        <Route path="card/:id" element={<CardDetails />} />
-      </Route>
+ <Route path="/" element={<CardLayout />}>
+  <Route index element={<Home />} />
+  <Route path="about" element={<About />} />
+  <Route path="services" element={<Services />} />
+  <Route path="contact" element={<Contact />} />
+  <Route path="card" element={<Card />} />
+  <Route path="card/:id" element={<CardDetails />} />
+</Route>
 
 
       {/* صفحات الأدمن */}

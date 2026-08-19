@@ -4,6 +4,7 @@ import useThemeStore from "../../store/useThemeStore";
 import CartDrawer from "./Drawer";
 
 export default function CardLayout() {
+  console.log("CardLayout loaded");
   const { theme } = useThemeStore();
 
   return (

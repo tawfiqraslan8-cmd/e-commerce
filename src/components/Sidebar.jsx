@@ -27,9 +27,6 @@ const location = useLocation();
   return (
     <>
       {/* زر الموبايل */}
-      <button onClick={toggleOpen}>
-        ☰
-      </button>
 
       {open && (
         <div

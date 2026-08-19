@@ -4,11 +4,7 @@ import UseAuthStore from "../../store/UseAuthStore";
 export default function AdminRoute() {
   const { token, userRole } = UseAuthStore();
 
-  if (!token) {
-    return <Navigate to="/signin" replace />;
-  }
-
-  if (userRole !== "admin") {
+  if (!token || userRole !== "admin") {
     return <Navigate to="/" replace />;
   }
 
